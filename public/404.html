@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <title>404</title>
+</head>
+<body>
+
+    <header>
+        <div class="myanime">
+            <span>ani me</span>
+        </div>
+        <div class="search_pop">
+                <input type="text" class="inpt_search" name="inpt_search" placeholder="Aa..">
+                <select name="category" class="category" >
+                    <option value="anime">anime</option>
+                    <option value="manga">manga</option>
+                </select>
+                <select name="type" class="type_category type_anime" data-type="anime">
+                    <option value="type" disabled selected>type</option>
+                    <option value="tv">tv</option>
+                    <option value="ova">ova</option>
+                    <option value="movie">movie</option>
+                    <option value="special">special</option>
+                    <option value="ona">ona</option>
+                    <option value="music">music</option>
+                </select>
+                <select name="type" class="type_category type_manga" data-type="anime">
+                    <option value="type" disabled selected>type</option>
+                    <option value="manga">manga</option>
+                    <option value="manhwa">manhwa</option>
+                    <option value="manhua">manhua</option>
+                    <option value="novel">novel</option>
+                    <option value="oneshot">oneshot</option>
+                    <option value="doujin">doujin</option>
+                </select>
+                <button  class="btn_search">Search</button>
+        </div>
+    </header>
+    
+        <div class="error_page">
+            <img src="https://images4.alphacoders.com/111/1112635.png" alt="error page not found">
+        </div>
+    
+        <script>
+            setTimeout(()=>{
+                location.assign('/')
+            },2000)
+        </script>
+</body>
+</html>
