@@ -3,7 +3,7 @@
 * [divLuffy](https://www.instagram.com/divluffy/)
 
 #### Project View
-[View Project](https://gsg-g10.github.io/)
+[View Project](https://myanimeimage.herokuapp.com/)
 
 
 ## Why
