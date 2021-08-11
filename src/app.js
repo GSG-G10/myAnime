@@ -9,7 +9,6 @@ router.get('/home', async (req, res) => {
     await fetch(`https://api.waifu.pics/sfw/${caregory[i]}`).then((getData) =>{
       return getData.json();
     }).then((data)=> {
-      console.log(data);
       results.push(data);
     });
   }
@@ -18,9 +17,7 @@ router.get('/home', async (req, res) => {
 
 
 router.post('/api', (req, res)=>{
-  console.log(req.body);
   const SearchApi = `https://api.jikan.moe/v3/search/${req.body.category}?q=${req.body.inpt_search}&type=${req.body.typeSerch}&page=${req.body.page}`;
-  console.log(SearchApi);
   fetch(SearchApi).then((getData)=>{
     return getData.json();
   }).then((data)=>{

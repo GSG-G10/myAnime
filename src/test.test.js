@@ -1,4 +1,3 @@
-
 const request = require('supertest')
 const app = require('./app')
 
@@ -7,7 +6,6 @@ test('GET image status 200', (done) => {
       .get('/home')
       .expect(200)
   done()
-
 });
 
 test('POST image status 200', (done) => {
@@ -15,5 +13,4 @@ test('POST image status 200', (done) => {
       .get('/api')
       .expect(200)
   done()
-
 });
