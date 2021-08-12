@@ -82,6 +82,7 @@ typeManga.addEventListener('click', () => {
 });
 
 btnSearch.addEventListener('click', () => {
+  
   waitLoadData.classList.add('active');
   link = 'search';
   searchApi(category.value, inptSearch.value, secondSelect, page);
