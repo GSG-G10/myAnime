@@ -7,37 +7,43 @@ const category = document.querySelector('.category');
 const typeAnime = document.querySelector('.type_anime');
 const typeManga = document.querySelector('.type_manga');
 const mode = document.querySelector('._mode_');
-const waitLoadData = document.querySelector('.wait_load_data')
+const waitLoadData = document.querySelector('.wait_load_data');
 
 waitLoadData.classList.add('active');
-  
-mode.addEventListener('click', ()=>{
+mode.addEventListener('click', () => {
   document.querySelector('html').classList.toggle('dark');
 });
 
-
 let page = 1;
 let link = 'home';
-fetch('/home').then((getData) =>{
-  return getData.json();
-}).then((data)=> {
-  waitLoadData.classList.remove('active');
+fetch('/home')
+    .then((getData) => {
+      return getData.json();
+    })
+    .then((data) => {
+      waitLoadData.classList.remove('active');
 
-  imgHome(data);
-  window.addEventListener('scroll', ()=>{
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
-    if ((clientHeight + scrollTop >= scrollHeight - 10) && containers.children[0].classList.contains('img-card-main') && link =='home') {
-      fetch('/home').then((getData) =>{
-        return getData.json();
-      }).then((data)=> {
-        imgHome(data);
+      imgHome(data);
+      window.addEventListener('scroll', () => {
+        const {scrollTop, scrollHeight, clientHeight} =
+        document.documentElement;
+        if (
+          clientHeight + scrollTop >= scrollHeight - 10 &&
+        containers.children[0].classList.contains('img-card-main') &&
+        link == 'home'
+        ) {
+          fetch('/home')
+              .then((getData) => {
+                return getData.json();
+              })
+              .then((data) => {
+                imgHome(data);
+              });
+        }
       });
-    }
-  });
-});
+    });
 
-
-inptSearch.addEventListener('keyup', ()=>{
+inptSearch.addEventListener('keyup', () => {
   const regExpStrong = /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
   if (inptSearch.value.match(regExpStrong)) {
     inptSearch.classList.add('error');
@@ -45,8 +51,6 @@ inptSearch.addEventListener('keyup', ()=>{
     inptSearch.classList.remove('error');
   }
 });
-
-
 
 // home
 function imgHome(data) {
@@ -59,7 +63,7 @@ function imgHome(data) {
   }
 }
 
-category.addEventListener('click', ()=>{
+category.addEventListener('click', () => {
   if (category.value === 'anime') {
     typeAnime.classList.remove('active');
     typeManga.classList.remove('active');
@@ -70,24 +74,24 @@ category.addEventListener('click', ()=>{
 });
 
 let secondSelect = typeAnime.value;
-typeAnime.addEventListener('click', ()=>{
+typeAnime.addEventListener('click', () => {
   secondSelect = typeAnime.value;
 });
-typeManga.addEventListener('click', ()=>{
+typeManga.addEventListener('click', () => {
   secondSelect = typeManga.value;
 });
 
-btnSearch.addEventListener('click', ()=>{
+btnSearch.addEventListener('click', () => {
   waitLoadData.classList.add('active');
   link = 'search';
-  searchApi(category.value, inptSearch.value, secondSelect, page );
-  window.addEventListener('scroll', ()=>{
+  searchApi(category.value, inptSearch.value, secondSelect, page);
+  window.addEventListener('scroll', () => {
     const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
     if (clientHeight + scrollTop >= scrollHeight - 10) {
-        page < 8 ? page++ : page;
-        if (page < 8) {
-          searchApi(category.value, inptSearch.value, secondSelect, page );
-        }
+      page < 8 ? page++ : page;
+      if (page < 8) {
+        searchApi(category.value, inptSearch.value, secondSelect, page);
+      }
     }
   });
 });
@@ -107,7 +111,7 @@ async function searchApi(x, y, z, p) {
 function sendData(json) {
   waitLoadData.classList.remove('active');
   if (containers.children[0].classList.contains('img-card-main')) {
-    containers.innerHTML = '';
+    removeChild(containers);
   }
   for (let x = 0; x < 49; x++) {
     containers.innerHTML += `
@@ -131,8 +135,13 @@ function sendData(json) {
   }
 }
 
-
-myanime.addEventListener('click', ()=>{
+myanime.addEventListener('click', () => {
   location.reload();
 });
 
+// for remove all content main
+function removeChild(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}

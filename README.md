@@ -7,7 +7,7 @@
 
 
 ## Why
-#### for image anime and serch list of anime or manga
+#### for image anime and serch list of anime or manga 
 
 ### Built With
 * HTML
